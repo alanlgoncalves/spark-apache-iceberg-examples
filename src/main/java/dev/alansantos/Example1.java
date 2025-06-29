@@ -42,7 +42,7 @@ public class Example1 {
         Dataset<Row> flightsDataset = sparkSession.read()
                 .option("header", "true")
                 .option("inferSchema", "true")
-                .csv("s3a://warehouse/warehouse/flights.csv");
+                .csv("s3a://warehouse/csv_files/flights.csv");
 
         flightsDataset.createOrReplaceTempView("tmp_flights_view");
 
@@ -70,7 +70,7 @@ public class Example1 {
         Dataset<Row> airlinesDataset = sparkSession.read()
                 .option("header", "true")
                 .option("inferSchema", "true")
-                .csv("s3a://warehouse/warehouse/airports.csv");
+                .csv("s3a://warehouse/csv_files/airports.csv");
 
         airlinesDataset.createOrReplaceTempView("tmp_airports_view");
 
@@ -96,7 +96,7 @@ public class Example1 {
         Dataset<Row> airlinesDataset = sparkSession.read()
                 .option("header", "true")
                 .option("inferSchema", "true")
-                .csv("s3a://warehouse/warehouse/airlines.csv");
+                .csv("s3a://warehouse/csv_files/airlines.csv");
 
         airlinesDataset.createOrReplaceTempView("tmp_airlines_view");
 
