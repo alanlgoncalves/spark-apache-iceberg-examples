@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.alansantos'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spark Core
+    implementation 'org.apache.spark:spark-core_2.12:3.3.2'
+    implementation 'org.apache.spark:spark-sql_2.12:3.3.2'
+
+    // Iceberg core + Spark runtime
+    implementation 'org.apache.iceberg:iceberg-spark-runtime-3.3_2.12:1.5.0'
+
+    // Parquet support (opcional, mas geralmente necessário)
+    implementation 'org.apache.parquet:parquet-hadoop:1.12.3'
+
+    // Hadoop + AWS
+    implementation 'org.apache.hadoop:hadoop-aws:3.3.4'
+
+    // Java AWS SDK
+    implementation 'com.amazonaws:aws-java-sdk-bundle:1.11.1026'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.36'
+}
+
+test {
+    useJUnitPlatform()
+}
