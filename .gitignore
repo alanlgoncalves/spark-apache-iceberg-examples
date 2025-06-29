@@ -31,3 +31,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Minio ###
+minio-data/.minio.sys
+minio-data/warehouse
