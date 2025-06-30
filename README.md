@@ -2,6 +2,13 @@
 
 This project shows how to manipulate Apache Iceberg Tables using data from CSV files
 
+## Data CSV Files
+
+- `./minio-data/csv_files/airlines.csv`: Version 1 of airlines companies
+- `./minio-data/csv_files/airlines_v2.csv`: Version 2 of airlines companies (Include Country field)
+- `./minio-data/csv_files/airports.csv`: Version 1 of airports
+- `./minio-data/csv_files/flights.csv`: Version 1 of fights
+
 ## Used Technologies
 - Java 11
 - Docker
