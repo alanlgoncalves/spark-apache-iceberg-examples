@@ -1,4 +1,4 @@
-package dev.alansantos.utils;
+package dev.alansantos.util;
 
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructField;
