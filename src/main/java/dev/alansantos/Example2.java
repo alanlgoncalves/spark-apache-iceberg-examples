@@ -36,7 +36,7 @@ public class Example2 {
         }
     }
 
-    // Realiza o COUNT de número de voos por compania aerea
+    // Realiza o COUNT de número de voos por companhia aerea
     private static void numberOfFlightsByAirlineName(SparkSession sparkSession) {
         String query = "SELECT " +
                 "   COUNT(*) AS total_flights, " +
