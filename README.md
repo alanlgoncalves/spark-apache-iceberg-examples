@@ -25,4 +25,5 @@ This project shows how to manipulate Apache Iceberg Tables using data from CSV f
 - `Example1` shows how to create Apache Iceberg tables from CSV files using Spark
 - `Example2` shows how to query on Iceberg tables using Spark SQL
 - `Example3` shows how to version an Apache Iceberg table when need to create new field
-- `Example4` shows how to purge data dropping a table partition
+- `Example4` shows how to purge data using delete command
+- `Example5` shows how to make table maintenance
