@@ -15,7 +15,8 @@ public class SparkConfiguration {
                 .set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
                 .set("spark.sql.catalog.local", "org.apache.iceberg.spark.SparkCatalog")
                 .set("spark.sql.catalog.local.type", "hadoop")
-                .set("spark.sql.catalog.local.warehouse", "s3a://warehouse/database");
+                .set("spark.sql.catalog.local.warehouse", "s3a://warehouse/database")
+                .set("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions");
     }
 
 }
