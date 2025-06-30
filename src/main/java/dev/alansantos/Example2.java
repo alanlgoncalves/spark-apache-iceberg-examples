@@ -1,7 +1,6 @@
 package dev.alansantos;
 
 import dev.alansantos.conf.SparkConfiguration;
-import org.apache.spark.SparkConf;
 import org.apache.spark.sql.SparkSession;
 
 public class Example2 {
