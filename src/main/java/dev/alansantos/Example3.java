@@ -30,7 +30,7 @@ public class Example3 {
                 .option("inferSchema", "true")
                 .csv("s3a://warehouse/csv_files/airlines_v2.csv");
 
-        sparkSession.sql("select * from local.hub.airlines").show();
+        sparkSession.sql("select * from local.hub.airlines").show(100, false);
 
         validateNewIcebergFields(sparkSession, airlinesDatasetV2);
 
@@ -39,7 +39,9 @@ public class Example3 {
                 .mode("append")
                 .save("local.hub.airlines");
 
-        sparkSession.sql("select * from local.hub.airlines").show();
+        sparkSession.sql("select * from local.hub.airlines").show(100, false);
+
+        sparkSession.sql("select IATA_CODE, AIRLINE, COALESCE(COUNTRY, 'USA') from local.hub.airlines").show(100, false);
     }
 
     private static void validateNewIcebergFields(SparkSession sparkSession, Dataset<Row> airlinesDatasetV2) {
