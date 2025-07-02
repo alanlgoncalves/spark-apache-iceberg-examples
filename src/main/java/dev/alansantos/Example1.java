@@ -5,6 +5,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import static dev.alansantos.util.SparkUtils.*;
+
 public class Example1 {
 
     /*
@@ -34,7 +36,7 @@ public class Example1 {
 
         flightsDataset.createOrReplaceTempView("tmp_flights_view");
 
-        if(!sparkSession.catalog().tableExists("flights")) {
+        if(!sparkSession.catalog().tableExists(FLIGHT_TABLE)) {
             sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
 
             sparkSession.sql(
@@ -64,7 +66,7 @@ public class Example1 {
 
         airlinesDataset.createOrReplaceTempView("tmp_airports_view");
 
-        if(!sparkSession.catalog().tableExists("airports")) {
+        if(!sparkSession.catalog().tableExists(AIRPORT_TABLE)) {
             sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
 
             sparkSession.sql("CREATE TABLE IF NOT EXISTS local.hub.airports \n" +
@@ -92,7 +94,7 @@ public class Example1 {
 
         airlinesDataset.createOrReplaceTempView("tmp_airlines_view");
 
-        if(!sparkSession.catalog().tableExists("airlines")) {
+        if(!sparkSession.catalog().tableExists(AIRLINE_TABLE)) {
             sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
 
             sparkSession.sql("CREATE TABLE IF NOT EXISTS local.hub.airlines \n" +
