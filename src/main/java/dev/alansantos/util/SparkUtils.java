@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 public class SparkUtils {
 
-    public final static String AIRPORT_TABLE = "local.airports";
+    public final static String AIRPORT_TABLE = "local.hub.airports";
 
-    public final static String AIRLINE_TABLE = "local.airlines";
+    public final static String AIRLINE_TABLE = "local.hub.airlines";
 
-    public final static String FLIGHT_TABLE = "local.flights";
+    public final static String FLIGHT_TABLE = "local.hub.flights";
 
     public static void validateNewFields(final SparkSession sparkSession,
                                           final String icebergTableName,

@@ -35,8 +35,10 @@ public class Example1 {
         flightsDataset.createOrReplaceTempView("tmp_flights_view");
 
         if(!sparkSession.catalog().tableExists("flights")) {
+            sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
+
             sparkSession.sql(
-                    "CREATE TABLE IF NOT EXISTS local.flights \n" +
+                    "CREATE TABLE IF NOT EXISTS local.hub.flights \n" +
                     "    USING iceberg \n" +
                     "    PARTITIONED BY (days(FLIGHT_DATE)) \n" +
                     "    TBLPROPERTIES (\n" +
@@ -51,7 +53,7 @@ public class Example1 {
         flightsDataset.write()
                 .format("iceberg")
                 .mode("append")
-                .save("local.flights");
+                .save("local.hub.flights");
     }
 
     private static void createAirportsTable(SparkSession sparkSession) {
@@ -63,7 +65,9 @@ public class Example1 {
         airlinesDataset.createOrReplaceTempView("tmp_airports_view");
 
         if(!sparkSession.catalog().tableExists("airports")) {
-            sparkSession.sql("CREATE TABLE IF NOT EXISTS local.airports \n" +
+            sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
+
+            sparkSession.sql("CREATE TABLE IF NOT EXISTS local.hub.airports \n" +
                     "    USING iceberg \n" +
                     "    TBLPROPERTIES (\n" +
                     "        'write.target-file-size-bytes' = '134217728', \n" +
@@ -77,7 +81,7 @@ public class Example1 {
         airlinesDataset.write()
                 .format("iceberg")
                 .mode("append")
-                .save("local.airports");
+                .save("local.hub.airports");
     }
 
     private static void createAirlinesTable(SparkSession sparkSession) {
@@ -89,7 +93,9 @@ public class Example1 {
         airlinesDataset.createOrReplaceTempView("tmp_airlines_view");
 
         if(!sparkSession.catalog().tableExists("airlines")) {
-            sparkSession.sql("CREATE TABLE IF NOT EXISTS local.airlines \n" +
+            sparkSession.sql("CREATE NAMESPACE IF NOT EXISTS local.hub");
+
+            sparkSession.sql("CREATE TABLE IF NOT EXISTS local.hub.airlines \n" +
                     "    USING iceberg \n" +
                     "    TBLPROPERTIES (\n" +
                     "        'write.target-file-size-bytes' = '134217728', \n" +
@@ -99,5 +105,10 @@ public class Example1 {
                     "   AS \n" +
                     "   SELECT * FROM tmp_airlines_view");
         }
+
+        airlinesDataset.write()
+                .format("iceberg")
+                .mode("append")
+                .save("local.hub.airlines");
     }
 }

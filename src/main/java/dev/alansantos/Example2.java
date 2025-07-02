@@ -29,8 +29,8 @@ public class Example2 {
         String query = "SELECT " +
                 "   COUNT(*) AS total_flights, " +
                 "   a.AIRLINE " +
-                "FROM local.flights f " +
-                "INNER JOIN local.airlines a " +
+                "FROM local.hub.flights f " +
+                "INNER JOIN local.hub.airlines a " +
                 "   ON f.AIRLINE = a.IATA_CODE " +
                 "GROUP BY a.AIRLINE";
 
@@ -42,8 +42,8 @@ public class Example2 {
         String query = "SELECT " +
                 "   COUNT(*) AS total_flights, " +
                 "   a.AIRPORT as origin_airport_name " +
-                "FROM local.flights f " +
-                "INNER JOIN local.airports a " +
+                "FROM local.hub.flights f " +
+                "INNER JOIN local.hub.airports a " +
                 "   ON f.ORIGIN_AIRPORT = a.IATA_CODE " +
                 "GROUP BY a.AIRPORT";
 
@@ -55,8 +55,8 @@ public class Example2 {
         String query = "SELECT " +
                 "   COUNT(*) AS total_flights, " +
                 "   a.AIRPORT as origin_airport_name " +
-                "FROM local.flights f " +
-                "INNER JOIN local.airports a " +
+                "FROM local.hub.flights f " +
+                "INNER JOIN local.hub.airports a " +
                 "   ON f.DESTINATION_AIRPORT = a.IATA_CODE " +
                 "GROUP BY a.AIRPORT";
 
