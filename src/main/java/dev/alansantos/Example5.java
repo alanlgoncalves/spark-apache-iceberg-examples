@@ -54,7 +54,8 @@ public class Example5 {
                 "older_than => TIMESTAMP '9999-12-31 23:59:59'," +
                 "retain_last => 1)", namespace, table)).show(true);
 
-        sparkSession.sql(String.format("CALL local.system.remove_orphan_files('local.%s.%s')", namespace, table)).show(false);
+        sparkSession.sql(String.format("CALL local.system.remove_orphan_files('local.%s.%s')", namespace, table))
+                .show(false);
 
     }
 
